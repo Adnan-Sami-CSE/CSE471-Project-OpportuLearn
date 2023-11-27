@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #3f3f46;
+    }
+
+    .jumbotron {
+      background-color: #e9ecef;
+      padding: 2rem;
+    }
+
+    .card {
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.8); /* Adjust the opacity as needed */
+    }
+
+    .card-header {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .card-body {
+      color: #343a40;
+    }
+  </style>
+  <title>Student Homepage</title>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Student Homepage</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="mb-0">Student Information</h4>
+          </div>
+          <div class="card-body">
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Username:</strong> johndoe</p>
+            <p><strong>Email:</strong> johndoe@example.com</p>
+            <p><strong>ID No:</strong> 123456</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="mb-0">Courses Added</h4>
+          </div>
+          <div class="card-body">
+            <p><a href="{% url 'coursedetails01' %}" class="btn btn-custom btn-lg mr-3">Compiler Design</a></p>
+            <p><a href="{% url 'coursedetails02' %}" class="btn btn-custom btn-lg mr-3">Machine Learning</a></p>
+            <p><a href="{% url 'coursedetails03' %}" class="btn btn-custom btn-lg mr-3">Python OOP</a></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h4 class="mb-0">Courses Completed</h4>
+          </div>
+          <div class="card-body">
+            <p>Course X</p>
+            <p>Course Y</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

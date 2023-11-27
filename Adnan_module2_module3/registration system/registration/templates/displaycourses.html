@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .course-row {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .course-block {
+            background-color: #727e8a;
+            padding: 20px;
+            margin: 20px;
+            width: 30%;
+            display: inline-block;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .course-image {
+            width: 100%;
+            height: 150px;
+            background-color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .course-info {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .course-option {
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        .paid-option {
+            color: #ff0000;
+        }
+
+        .add-course {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: block;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>List of OpportuLearn Courses</h1>
+        <input type="text" id="searchInput" oninput="searchCourses()" placeholder="Search for a course...">
+    </div>
+
+    <div class="course-row">
+        <div class="course-block">
+            <div class="course-image"><img src="registration\templates\img\course01.jpg" alt="Course Image"></div>
+            <div class="course-info">Compiler Design</div>
+            <div class="course-option">Category: Free</div>
+            <a href="#" class="add-course">Add Course</a>
+        </div>
+
+        <div class="course-block">
+            <div class="course-image"></div>
+            <div class="course-info">Machine Learning</div>
+            <div class="course-option">Category: Free</div>
+            <a href="#" class="add-course">Add Course</a>
+        </div>
+
+        <div class="course-block">
+            <div class="course-image"></div>
+            <div class="course-info">Python OOP</div>
+            <div class="course-option">Category: Paid</div>
+            <a href="{% url 'payment_confirmation' %}" class="add-course">Pay to Add</a>
+        </div>
+
+    <div class="course-row">
+        <div class="course-block">
+            <div class="course-image"></div>
+            <div class="course-info">Webpage design</div>
+            <div class="course-option">Category: Paid</div>
+            <a href="{% url 'payment_confirmation' %}" class="add-course">Pay to Add</a>
+        </div>
+
+        <div class="course-block">
+            <div class="course-image"></div>
+            <div class="course-info">Artificial Intelligence</div>
+            <div class="course-option">Category: Free</div>
+            <a href="#" class="add-course">Add Course</a>
+        </div>
+
+        <div class="course-block">
+            <div class="course-image"></div>
+            <div class="course-info">Networking</div>
+            <div class="course-option">Category: Paid</div>
+            <a href="{% url 'payment_confirmation' %}" class="add-course">Pay to Add</a>
+        </div>
+    </div>
+
+    <script>
+        function searchCourses() {
+            const searchInput = document.getElementById('searchInput');
+            const courseBlocks = document.querySelectorAll('.course-block');
+
+            const searchValue = searchInput.value.toLowerCase();
+
+            courseBlocks.forEach(function (block) {
+                const courseInfo = block.querySelector('.course-info').textContent.toLowerCase();
+
+                if (courseInfo.includes(searchValue)) {
+                    block.style.display = 'inline-block';
+                } else {
+                    block.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+

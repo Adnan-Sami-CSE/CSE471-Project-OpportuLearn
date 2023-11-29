@@ -1,0 +1,34 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} Add Category {% endblock %}
+{% block content %}
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+
+    <div class="form-container">
+        <h2>Add Category</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save Category</button>
+            <button> <a href="/">Home</a></button>
+            <button> <a href="{% url "add_course" %}" >Retun Add Course</a></button>
+        </form>
+    </div>
+
+{% endblock %}

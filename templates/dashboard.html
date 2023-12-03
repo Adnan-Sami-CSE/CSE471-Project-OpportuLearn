@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Video Conference</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron mt-5">
+        <h1 class="display-4">Welcome, {{name}}!</h1>
+        <hr class="my-4">
+        <!-- create a "New Meeting" button -->
+        <a href="{% url 'meeting' %}" class="btn btn-primary btn-lg">New Meeting</a>
+        <a href="{% url 'join_room' %}" class="btn btn-success btn-lg">Join Meeting</a>
+        <a href="{% url 'logout' %}" class="btn btn-danger btn-lg">Logout</a>
+      </div>
+    </div>
+  </body>
+</html>
+

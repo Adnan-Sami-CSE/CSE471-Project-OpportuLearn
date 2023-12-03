@@ -1,0 +1,74 @@
+{% extends "./base.html" %} {% load static %} {% block title %} Booking List
+{%endblock %} {% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">Student Homepage</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">Student Information</h4>
+        </div>
+        <div class="card-body">
+          <p><strong>Username:</strong> {{user}}</p>
+          <p><strong>Email:</strong> {{email}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">Courses Added</h4>
+        </div>
+        <div class="card-body">
+          <p>
+            <a
+              href="{% url 'coursedetails01' %}"
+              class="btn btn-custom btn-lg mr-3"
+              >Compiler Design</a
+            >
+          </p>
+          <p>
+            <a
+              href="{% url 'coursedetails02' %}"
+              class="btn btn-custom btn-lg mr-3"
+              >Machine Learning</a
+            >
+          </p>
+          <p>
+            <a
+              href="{% url 'coursedetails03' %}"
+              class="btn btn-custom btn-lg mr-3"
+              >Python OOP</a
+            >
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">Courses Completed</h4>
+        </div>
+        <div class="card-body">
+          {% if user_certificates %}
+          <p>User Certificates Exist!</p>
+          {% for certificate in user_certificates %}
+          <p>
+            {{ certificate.course_name }} -
+            <a
+              href="{% static 'F:\CSE\CSE471\Lab\ver3\CSE471\media\certificates\certificate.pdf' %}"
+              target="_blank"
+              >View Certificate</a
+            >
+          </p>
+          {% endfor %} {% else %}
+          <p>No certificates available.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

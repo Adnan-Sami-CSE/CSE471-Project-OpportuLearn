@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Signup Page</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -14,6 +15,7 @@
       margin: 0;
       box-sizing: border-box;
     }
+
     body {
       background-color: #f2f2f2;
       font-family: "Poppins", sans-serif;
@@ -23,6 +25,7 @@
       height: 100vh;
       margin: 0;
     }
+
     form {
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 10px;
@@ -31,12 +34,14 @@
       width: 450px;
       text-align: center;
     }
+
     form * {
       color: #333;
       letter-spacing: 0.5px;
       outline: none;
       border: none;
     }
+
     form h3 {
       font-size: 32px;
       font-weight: 500;
@@ -44,6 +49,7 @@
       text-align: center;
       color: #333;
     }
+
     label {
       display: block;
       margin-top: 30px;
@@ -51,6 +57,7 @@
       font-weight: 500;
       color: #555;
     }
+
     input {
       display: block;
       height: 40px;
@@ -63,9 +70,11 @@
       font-weight: 300;
       border: 1px solid #ddd;
     }
+
     ::placeholder {
       color: #777;
     }
+
     button {
       margin-top: 14px;
       width: 100%;
@@ -78,13 +87,16 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     button:hover {
       background-color: #4a85b7;
     }
+
     .social {
       margin-top: 30px;
       display: flex;
     }
+
     .social div {
       background: #e74c3c;
       width: 150px;
@@ -94,15 +106,19 @@
       text-align: center;
       transition: background-color 0.3s ease;
     }
+
     .social div:hover {
       background-color: #c0392b;
     }
+
     .social .fb {
       margin-left: 25px;
     }
+
     .social i {
       margin-right: 4px;
     }
+
     a {
       display: block;
       margin-top: 20px;
@@ -111,11 +127,31 @@
       font-weight: 500;
       transition: color 0.3s ease;
     }
+
     a:hover {
       color: #333;
     }
+
+    .alert-error {
+      color: red;
+    }
+
+    .alert-success {
+      color: green;
+    }
   </style>
+
+  {% if messages %}
+  {% for message in messages %}
+
+  <script>
+    alert("{{ message }}");
+  </script>
+
+  {% endfor %}
+  {% endif %}
 </head>
+
 <body>
   <form action="" method="post">
     {% csrf_token %}
@@ -132,4 +168,5 @@
     <a href="{% url 'login' %}">I already have an account</a>
   </form>
 </body>
+
 </html>

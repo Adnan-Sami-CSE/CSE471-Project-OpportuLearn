@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from .info import *
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -132,3 +133,9 @@ LOGIN_URL = '/account/login/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+EMAIL_USE_TLS = EMAIL_USE_TLS 
+EMAIL_HOST = EMAIL_HOST
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT= EMAIL_PORT

@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block content %}
+<h2>Query Detail</h2>
+<p>{{ query.content }} - by {{ query.user.username }}</p>
+
+{% if user.is_authenticated and user.is_staff %}
+<a
+  href="{% url 'delete_query' query_id=query.id %}"
+  class="btn btn-info text-white mb-2"
+  >Delete Query</a
+>
+{% endif %} {% endblock %}

@@ -1,0 +1,20 @@
+<!-- payment.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make Payment</title>
+</head>
+<body>
+  <h1>Make Payment</h1>
+  <form method="post" action="{% url 'process_payment' %}">
+    {% csrf_token %}
+    <p>Are you sure you want to add the course? </p>
+    <label for="confirmation_code">Enter 4-digit Confirmation Code:</label>
+    <input type="text" name="confirmation_code" required pattern="\d{4}" title="Enter a 4-digit number">
+    <button type="submit">Add Course</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block content %}
+<h2>Delete Query</h2>
+<p>Are you sure you want to delete the query "{{ query.content }}"?</p>
+<form method="post" action="">
+  {% csrf_token %}
+  <button type="submit">Delete</button>
+</form>
+<a href="{% url 'all_queries' %}">Cancel</a>
+{% endblock %}

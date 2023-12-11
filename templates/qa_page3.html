@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block content %}
+<h2>All Queries</h2>
+<ul>
+  {% for query in queries %}
+  <li>
+    <a href="{% url 'query_detail' query_id=query.id %}">{{ query.content }}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

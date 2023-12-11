@@ -1,0 +1,69 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block content %}              
+
+    <input type="text" id="searchInput" onkeyup="searchCourses()" placeholder="Search for courses.." class="form-control mb-4">
+
+    <h1 class="text-center mb-4 text-info">Course List</h1>        
+    <div class="row">
+      {% for course in course %}
+          <div class="col-md-4 mb-4 course-block">
+              <div class="card p-4 bg-light text-dark" style="width: 330px;">          
+                  <p class="card-title text-info">Course Category: {{ course.category.name }}</p>
+                  <div class="course-info">
+                      <h5 class="card-text">Course Name: {{ course.name }}</h5>
+                  </div>
+                  <p class="card-text">Payment Category: {{ course.payment_category }}</p>
+                  <p class="card-text">Payment Amount: {{ course.payment_amount }}</p>
+                  <p class="card-text">Note: {{ course.note|default:"N/A" }}</p>
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'book_course' course.id %}" class="btn btn-info text-white">Book Now</a>
+              {% endif %}
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+
+    {% if user.is_authenticated %}
+      <a href="{% url 'dashboard' %}" class="btn btn-info text-white mb-2">Video Call Dashboard</a>
+      <a href="{% url 'studenthome' %}" class="btn btn-info text-white mb-2">Student Homepage</a>
+      <a href="{% url 'add_query' %}" class="btn btn-info text-white mb-2">Post Query</a>
+      <a href="{% url 'all_queries' %}" class="btn btn-info text-white mb-2">All Queries</a>
+      <a href="{% url 'payment_confirmation' %}" class="btn btn-info text-white mb-2">Payment</a></h3>
+    {% endif %}
+
+    {% if user.is_authenticated and user.is_staff %}
+      <a href="{% url 'add_course' %}" class="btn btn-info text-white mb-2">Add New Course</a>
+      <a href="{% url 'add_certificate' %}" class="btn btn-info text-white mb-2">Add Certificate</a>
+      <a href="{% url 'booking_list' %}" class="btn btn-info text-white mb-2">Booking list</a>
+      <a href="{% url 'add_StudentCourse' %}" class="btn btn-info text-white mb-2">Add Student Course</a>
+    {% endif %}
+
+  </div> 
+
+</div>  
+
+<script>
+    function searchCourses() {
+        const searchInput = document.getElementById('searchInput');
+        const courseBlocks = document.querySelectorAll('.course-block');
+
+        const searchValue = searchInput.value.toLowerCase();
+
+        courseBlocks.forEach(function (block) {
+            const courseInfo = block.querySelector('.course-info').textContent.toLowerCase();
+
+            if (courseInfo.includes(searchValue)) {
+                block.style.display = 'inline-block';
+            } else {
+                block.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+{% endblock %}
+
+
+

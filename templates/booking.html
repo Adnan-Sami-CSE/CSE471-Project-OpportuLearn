@@ -1,0 +1,56 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} Booking List {% endblock %}
+{% block content %}
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            width: 80%; /* Adjust the width as needed */
+            margin: 20px; /* Add some margin */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Add some top margin for spacing */
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+
+    <div class="form-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Booking Course</th>
+                    <th>Booking Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in booking %}
+                    <tr>
+                        <td>{{ booking.user }}</td>
+                        <td>{{ booking.course }}</td>
+                        <td>{{ booking.note }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button> <a href="/">Home</a></button>
+    </div>
+{% endblock %}

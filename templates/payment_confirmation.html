@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Please send the payment to the following number: +880123456</h2>
+        <h2>Payment will be done by Bkash or Nagad. Make sure to send your email and username in the message as well.</h2>
+        <p>You will soon get a confirmation code. Please enter the code below to confirm payment:</p>
+        <form action="{% url 'confirm_payment' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="confirmation_code">Confirmation Code:</label>
+                <input type="text" class="form-control" id="confirmation_code" name="confirmation_code" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Your Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm Payment</button>
+        </form>
+        <a href="{% url 'home' %}">Return to Home</a>
+    </div>
+</body>
+</html>

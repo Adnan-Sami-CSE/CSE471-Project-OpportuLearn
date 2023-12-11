@@ -1,0 +1,63 @@
+{% extends "./base.html" %} {% load static %} {% block title %} Booking List
+{%endblock %} {% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">Student Homepage</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-16 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">Student Information</h4>
+        </div>
+        <div class="card-body">
+          <p><strong>Username:</strong> {{ user }}</p>
+          <p><strong>Email:</strong> {{ email }}</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">Courses</h4>
+        </div>
+        <div class="card-body">
+          {% if user_courses %}
+          <p>User Courses Exist!</p>
+          {% for StudentCourse in user_courses %}
+          <p>
+            {{ StudentCourse.course_name }} - {{ StudentCourse.type_name }}
+            <a href="{{ StudentCourse.course_playlist }}" target="_blank"
+              >{{ StudentCourse.course_playlist }}</a
+            >
+          </p>
+          {% endfor %} {% else %}
+          <p>No body available.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">Courses Completed</h4>
+        </div>
+        <div class="card-body">
+          {% if user_certificates %}
+          <p>User Certificates Exist!</p>
+          {% for certificate in user_certificates %}
+          <p>
+            {{ certificate.course_name }} -
+            <a
+              href="https://www.edx.org/images/pdf/sample-course-certificate.pdf"
+              target="_blank"
+              >View Certificate</a
+            >
+          </p>
+          {% endfor %} {% else %}
+          <p>No certificates available.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

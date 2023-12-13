@@ -1,0 +1,40 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} Booking Course {% endblock %}
+{% block content %}
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            
+        }
+    </style>
+
+    <div class="form-container">
+
+        User Name: {{user}}<br>
+        Course Category: {{ course.category.name }} <br>
+        Course Name: {{ course.name }} <br>
+        Payment Category: {{ course.payment_category }} <br>
+        Payment Amount: {{ course.payment_amount }} <br>
+        Note: {{ course.note|default:"N/A" }}
+        <div class="card p-4" >
+            <h2 class="text-center mb-4">Book Course</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Book Now</button>
+            </form>
+        </div>
+    </div>    
+{% endblock %}

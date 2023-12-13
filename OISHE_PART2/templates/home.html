@@ -1,0 +1,43 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block content %}
+
+
+
+
+<h1 class="text-center mb-4">Course List</h1>
+{% for n in notification %}
+<div class="col-md-4 mb-4">
+  <div class="card p-4" style="width: 330px;">
+    {{ n.notification }}
+  </div>
+</div>
+{% endfor %}
+<div class="row">
+
+  {% for course in course %}
+  <div class="col-md-4 mb-4">
+    <div class="card p-4" style="width: 330px;">
+      Course Category: {{ course.category.name }} <br>
+      Course Name: {{ course.name }} <br>
+      Payment Category: {{ course.payment_category }} <br>
+      Payment Amount: {{ course.payment_amount }} <br>
+      Note: {{ course.note|default:"N/A" }}
+      {% if user.is_authenticated %}
+      <a href="{% url 'book_course' course.id %}" class="btn btn-primary">Book Now</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% if user.is_authenticated and user.is_staff %}
+<a href="{% url 'add_course' %}" class="btn btn-primary">Add New Course</a>
+<a href="{% url 'booking_list' %}" class="btn btn-primary">Booking list</a>
+{% endif %}
+
+
+</div>
+
+</div>
+{% endblock %}
